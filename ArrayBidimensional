@@ -1,0 +1,83 @@
+package arrayBidimensionales;
+
+import java.util.Random;
+
+//Se pide crear una Array bidimensional de 4×4 de números enteros.
+//a) Rellenar el Array bidimensional con valores aleatorios comprendidos entre 1 y 9.
+//b) Sumar la diagonal principal.
+//              x    -    -    -
+//              -    x    -    -
+//              -    -    x    -
+//              -    -    -    x
+//c) Sumar la diagonal secundaria.
+//              -    -    -    x
+//              -    -    x    -
+//              -    x    -    -
+//              x    -    -    -
+//d) Suma de una fila que debe llegar como parámetro al método.
+//e) Calcular el promedio de todos sus elementos del  Array bidimensional
+
+public class ArrayBidimensional {
+
+	public static void main(String[] args) {
+        int[][] array = new int[4][4];
+        Random rand = new Random();
+
+        // Rellenar el Array bidimensional con valores aleatorios entre 1 y 9
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                array[i][j] = rand.nextInt(9) + 1;
+            }
+        }
+
+        // Imprimir el Array bidimensional
+        System.out.println("Array bidimensional:");
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Sumar la diagonal principal
+        int sumDiagonalPrincipal = 0;
+        for (int i = 0; i < 4; i++) {
+            sumDiagonalPrincipal += array[i][i];
+        }
+        System.out.println("Suma de la diagonal principal: " + sumDiagonalPrincipal);
+
+        // Sumar la diagonal secundaria
+        int sumDiagonalSecundaria = 0;
+        for (int i = 0; i < 4; i++) {
+            sumDiagonalSecundaria += array[i][3 - i];
+        }
+        System.out.println("Suma de la diagonal secundaria: " + sumDiagonalSecundaria);
+
+        // Suma de una fila específica
+        int fila = 2; // Puedes cambiar esta fila según sea necesario
+        int sumFila = sumarFila(array, fila);
+        System.out.println("Suma de la fila " + fila + ": " + sumFila);
+
+        // Calcular el promedio de todos los elementos del Array bidimensional
+        double promedio = calcularPromedio(array);
+        System.out.println("Promedio de todos los elementos: " + promedio);
+    }
+
+    public static int sumarFila(int[][] array, int fila) {
+        int sum = 0;
+        for (int j = 0; j < 4; j++) {
+            sum += array[fila][j];
+        }
+        return sum;
+    }
+
+    public static double calcularPromedio(int[][] array) {
+        int sum = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                sum += array[i][j];
+            }
+        }
+        return sum / 16.0;
+    }
+}
