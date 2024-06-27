@@ -1,0 +1,34 @@
+package arrayBidimensionales;
+
+import java.util.Scanner;
+
+//Crear un Array bidimensional de 2 filas y 5 columnas. Realizar la carga de componentes por columna 
+//(es decir primero ingresar toda la primer columna, luego la segunda columna y así sucesivamente, por teclado)
+//Imprimir luego el Array bidimensional. 
+
+public class ArrayBidimensional2 {
+
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[][] array = new int[2][5];
+
+        // Carga de componentes por columna
+        for (int col = 0; col < 5; col++) {
+            for (int row = 0; row < 2; row++) {
+                System.out.print("Ingrese un valor para la posición [" + row + "][" + col + "]: ");
+                array[row][col] = scanner.nextInt();
+            }
+        }
+
+        // Imprimir el Array bidimensional
+        System.out.println("El Array bidimensional es:");
+        for (int row = 0; row < 2; row++) {
+            for (int col = 0; col < 5; col++) {
+                System.out.print(array[row][col] + " ");
+            }
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
